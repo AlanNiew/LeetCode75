@@ -16,37 +16,23 @@ public class Problem08 {
 
     /**
      * 给你一个整数数组nums ，判断这个数组中是否存在长度为 3 的递增子序列。
+     * 只关注存在即可
      * @param nums 整数数组
      * @return 是否存在长度为 3 的递增子序列
      */
     public boolean increasingTriplet(int[] nums) {
-        int len = nums.length;
-        if (len<3)return false;
-        int i =0,j=0,k=0;
-        while (i<len-2){
-            j = i+1;
-            while (j<len-1 && nums[i]==nums[j]) {
-                j++;
+        if (nums == null || nums.length < 3) return false;
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
+
+        for (int num : nums) {
+            if (num <= first) {
+                first = num; // 更新第一个最小值
+            } else if (num <= second) {
+                second = num; // 更新第二个最小值
+            } else {
+                return true; // 找到了比second大的数，构成递增子序列
             }
-            if (nums[i] > nums[j]) {
-                i = j;
-                continue;
-            }
-            k = j+1;
-            while (nums[j]==nums[k]) k++;
-            while (k<len-1) {
-                if (nums[j]>nums[k]) {
-                    if (nums[i]<nums[k]) {
-                        j = k;
-                    }else {
-                        i = k;
-                        continue;
-                    }
-                    k++;
-                }
-            }
-            if (nums[i]<nums[j]&&nums[j]<nums[k])return true;
-            i++;
         }
         return false;
     }
