@@ -18,7 +18,7 @@ public class Problem14 {
         int left = 0;
         int right = k;
         int max = sum;
-        while (right<nums.length){
+        while (right < nums.length){
             sum = sum - nums[left++] + nums[right++];
             if ( sum > max){
                 max = sum;
