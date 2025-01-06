@@ -10,6 +10,24 @@ public class Problem01 {
         System.out.println(mergeAlternately("abc", "pqr112"));
     }
 
+    class Solution {
+        public String mergeAlternately(String word1, String word2) {
+            StringBuilder res = new StringBuilder();
+            int len1 = word1.length();
+            int len2 = word2.length();
+            int len = Math.min(len1, len2);
+            char[] chars1 = word1.toCharArray();
+            char[] chars2 = word2.toCharArray();
+            int index = 0;
+            while (index < len) {
+                res.append(chars1[index]).append(chars2[index]);
+                index++;
+            }
+            res.append(new String(chars1, len, len1 - len));
+            res.append(new String(chars2, len, len2 - len));
+            return res.toString();
+        }
+    }
     public static String mergeAlternately(String word1, String word2) {
         StringBuilder res = new StringBuilder();
         int len1 = word1.length();

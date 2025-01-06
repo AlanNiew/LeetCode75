@@ -1,8 +1,6 @@
 package arrAndString;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author SouthWind
@@ -10,6 +8,27 @@ import java.util.Set;
  * Date 2024/8/4 9:25
  */
 public class Problem05 {
+
+    class Solution {
+        public String reverseVowels(String s) {
+            //反转元音，记录下标，重排回去
+            char[] chars = s.toCharArray();
+            Set<Character> set = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u','A', 'E', 'I', 'O', 'U'));
+            Stack<Integer> stack = new Stack<>();
+            List<Character> list = new LinkedList<>();
+            for (int i = 0; i < chars.length; i++) {
+                char c = chars[i];
+                if (set.contains(c)){
+                    stack.push(i);
+                    list.add(c);
+                }
+            }
+            while (!stack.isEmpty()){
+                chars[stack.pop()] = list.remove(0);
+            }
+            return new String(chars);
+        }
+    }
 
     public String reverseVowels(String s) {
         char[] chars = s.toCharArray();

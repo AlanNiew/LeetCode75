@@ -11,7 +11,20 @@ public class Problem02 {
         Problem02 problem02 = new Problem02();
         System.out.println(problem02.gcdOfStrings("AA", "A"));
     }
+    class Solution {
+        public String gcdOfStrings(String str1, String str2) {
+            String s1 = str1 + str2;
+            String s2 = str2 + str1;
+            if (!s1.equals(s2))return "";
+            int gcd = gcd(str1.length(), str2.length());
+            return str1.substring(0, gcd);
+        }
 
+        public int gcd(int a, int b){
+            if (b==0)return a;
+            return gcd(b,a%b);
+        }
+    }
     public String gcdOfStrings(String str1, String str2) {
         //最长公共子串
         int length1 = str1.length();
