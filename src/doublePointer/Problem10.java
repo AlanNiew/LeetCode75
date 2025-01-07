@@ -10,6 +10,21 @@ public class Problem10 {
         moveZeroes(new int[]{0,1,0,3,12});
     }
 
+    class Solution {
+        public void moveZeroes(int[] nums) {
+            int len = nums.length;
+            int j = 0; //不为零的数，只移动，不交换。
+            for (int i = 0; i < len; i++) {
+                if (nums[i] != 0){
+                    nums[j++] = nums[i];
+                }
+            }
+            while (j < len){
+                nums[j++] = 0;
+            }
+        }
+    }
+
     public static void moveZeroes(int[] nums) {
         int len = nums.length;
         for (int i = 0; i < len-1; i++) {

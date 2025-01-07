@@ -1,4 +1,4 @@
-package doublePointer;
+package arrAndString;
 
 /**
  * @author SouthWind
@@ -9,6 +9,24 @@ public class Problem07 {
 
     public static void main(String[] args) {
 
+    }
+
+    class Solution {
+        public int[] productExceptSelf(int[] nums) {
+            int len = nums.length;
+            int [] res = new int[len];
+            int pre = 1;
+            for (int i = 0; i < len; i++) {
+                res[i] = pre;
+                pre *= nums[i];
+            }
+            int post = 1;
+            for (int i = len - 1; i >= 0; i--) {
+                res[i] *= post;
+                post *= nums[i];
+            }
+            return res;
+        }
     }
 
     /**

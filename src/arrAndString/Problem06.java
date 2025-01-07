@@ -1,5 +1,10 @@
 package arrAndString;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author SouthWind
  * 编程千万条，规范第一条
@@ -8,7 +13,15 @@ package arrAndString;
 public class Problem06 {
 
     public static void main(String[] args) {
-        System.out.println(reverseWords("EPY2giL"));
+//        System.out.println(reverseWords("EPY2giL"));
+        Solution solution = new Solution();
+        System.out.println(solution.reverseWords("a good   example"));
+    }
+
+    static class Solution {
+        public String reverseWords(String s) {
+            return Arrays.stream(s.split("\\s+")).reduce( (a, b) -> b + " " + a).orElse("").trim();
+        }
     }
     public static String reverseWords(String s) {
         //以空白字符串进行分割

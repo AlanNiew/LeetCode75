@@ -1,4 +1,4 @@
-package doublePointer;
+package arrAndString;
 
 /**
  * @author SouthWind
@@ -12,6 +12,23 @@ public class Problem08 {
         int[] ints = {1,5,0,4,1,3};
         boolean b = problem08.increasingTriplet(ints);
         System.out.println(b);
+    }
+
+    class Solution {
+        public boolean increasingTriplet(int[] nums) {
+            int first = Integer.MAX_VALUE;
+            int second = Integer.MAX_VALUE;
+            for (int num : nums) {
+                if (num <= first){
+                    first = num;
+                }else if (num <= second){
+                    second = num;
+                }else {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     /**
