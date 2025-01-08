@@ -6,6 +6,23 @@ package slidWindow;
  * Date 2024/8/10 21:35
  */
 public class Problem14 {
+
+    class Solution {
+        public double findMaxAverage(int[] nums, int k) {
+            int len = nums.length;
+            int left = 0;
+            int sum = 0;
+            for (int i = 0; i < k; i++) {
+                sum += nums[i];
+            }
+            int max = sum;
+            for (int i = k; i < len; i++) {
+                sum += nums[i] - nums[left++];
+                if (sum > max) max = sum;
+            }
+            return max / (k * 1.0);
+        }
+    }
     /**
      * 643. 子数组最大平均数 I
      * k 为窗口大小

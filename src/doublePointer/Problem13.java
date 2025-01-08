@@ -11,6 +11,27 @@ import java.util.Map;
  */
 public class Problem13 {
 
+    class Solution {
+        public int maxOperations(int[] nums, int k) {
+            int res = 0, len = nums.length;
+            int left = 0, right = len - 1;
+            Arrays.sort(nums);
+            while (left < right){
+                int sum = nums[left] + nums[right];
+                if (sum == k){
+                    res++;
+                    left++;
+                    right--;
+                }else if (sum > k){
+                    right--;
+                }else {
+                    left++;
+                }
+            }
+            return res;
+        }
+    }
+
     /**
      * 1679. K 和数对的最大数目
      * 哈希

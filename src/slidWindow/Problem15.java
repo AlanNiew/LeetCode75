@@ -7,6 +7,27 @@ package slidWindow;
  */
 public class Problem15 {
 
+    class Solution {
+        public int maxVowels(String s, int k) {
+            boolean [] letters = new boolean[26];
+            letters[0] = letters['e'-'a'] = letters['i'-'a'] = letters['o'-'a'] = letters['u'-'a'] = true;
+            char[] chars = s.toCharArray();
+            int len = chars.length;
+            int sum = 0;
+            for (int i = 0; i < k; i++) {
+                if (letters[(chars[i] - 'a')]) sum++;
+            }
+            int max = sum;
+            for (int i = k; i < len; i++) {
+                if(letters[chars[i] - 'a']) sum--;
+                if (letters[chars[i] - 'a']) sum++;
+                if (sum > max) max = sum;
+                if (max == k) return k;
+            }
+            return max;
+        }
+    }
+
     /**
      * 1456. 定长子串中元音的最大数目
      * @param s 字符串

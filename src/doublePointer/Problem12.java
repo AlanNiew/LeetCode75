@@ -7,6 +7,23 @@ package doublePointer;
  */
 public class Problem12 {
 
+    class Solution {
+        public int maxArea(int[] height) {
+            int len = height.length,max = -1;
+            int left = 0, right = len - 1;
+            while (left < right){
+                int area = calculateArea(height, left, right);
+                max = Math.max(max,area);
+                if (height[left] < height[right]){
+                    left++;
+                }else {
+                    right--;
+                }
+            }
+            return max;
+        }
+    }
+
     /**
      * 盛水最多的容器
      * @param height 高度
