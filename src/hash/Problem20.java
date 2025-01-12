@@ -1,9 +1,6 @@
 package hash;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author SouthWind
@@ -11,6 +8,29 @@ import java.util.Set;
  * Date 2024/8/21 21:06
  */
 public class Problem20 {
+
+
+    class Solution {
+        public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+            List<List<Integer>> result = new ArrayList<>();
+            Set<Integer> set1 = new HashSet<>();
+            Set<Integer> set2 = new HashSet<>();
+            Set<Integer> res2 = new HashSet<>(); //仅nums2 有的值
+            for (int i : nums1) {
+                set1.add(i);
+            }
+            for (int i : nums2) {
+                set2.add(i);
+                if (!set1.contains(i)) {
+                    res2.add(i);
+                }
+            }
+            set1.removeAll(set2);
+            result.add(new ArrayList<>(set1));
+            result.add(new ArrayList<>(res2));
+            return result;
+        }
+    }
 
     /**
      * 2215. 找出两数组的不同

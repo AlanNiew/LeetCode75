@@ -7,6 +7,17 @@ package prefix;
  */
 public class Problem18 {
 
+    class Solution {
+        public int largestAltitude(int[] gain) {
+            int sum = 0,max = -1;
+            for (int i : gain) {
+                sum+=i;
+                max = Math.max(max,sum);
+            }
+            return max;
+        }
+    }
+
     /**
      * 1732. 找到最高海拔
      * @param gain

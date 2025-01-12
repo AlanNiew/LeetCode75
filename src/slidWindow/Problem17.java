@@ -11,6 +11,24 @@ public class Problem17 {
 
     }
 
+    static class Solution {
+        public int longestSubarray(int[] nums) {
+            int len = nums.length;
+            //滑动窗口必备三要素
+            int left = 0,right = 0,k = 1;
+            while (right < len){
+                if (nums[right] == 0){
+                    k--;
+                }
+                if (k < 0 && nums[left++] == 0){
+                    k++;
+                }
+                right++;
+            }
+            return right - left - 1;
+        }
+    }
+
     /**
      * 1493. 删掉一个元素后全为 1 的最长子数组
      * @param nums

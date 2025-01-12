@@ -9,6 +9,30 @@ import java.util.HashMap;
  * Date 2024/8/20 20:30
  */
 public class Problem19 {
+    public static void main(String[] args) {
+        System.out.println(new Solution().pivotIndex(new int[]{1, 7, 3, 6, 5, 6}));
+    }
+
+    static class Solution {
+        public int pivotIndex(int[] nums) {
+            int length = nums.length;
+            int suffixSum = 0;
+            for (int num : nums) {
+                suffixSum += num;
+            }
+            //前缀和
+            int prefixSum = 0;
+            for (int i = 0; i < length; i++) {
+                //后缀和
+                suffixSum -= nums[i];
+                if (suffixSum == prefixSum) {
+                    return i;
+                }
+                prefixSum += nums[i];
+            }
+            return -1;
+        }
+    }
 
     /**
      * 724. 寻找数组的中心索引
