@@ -1,6 +1,7 @@
 package stack;
 
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 /**
  * @author SouthWind
@@ -8,6 +9,23 @@ import java.util.Stack;
  * Date 2024/8/25 10:17
  */
 public class Problem24 {
+
+    class Solution {
+        public String removeStars(String s) {
+            char[] chars = s.toCharArray();
+            Stack<Character> stack = new Stack<>();
+            StringBuilder sb = new StringBuilder();
+            for (char aChar : chars) {
+                if (aChar == '*'){
+                    stack.pop();
+                }else {
+                    stack.push(aChar);
+                }
+            }
+            return stack.stream().map(String::valueOf).collect(Collectors.joining());
+        }
+    }
+
 
     /**
      * 2390. 删除 stars 后的结果字符串

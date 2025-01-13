@@ -9,6 +9,32 @@ import java.util.*;
  */
 public class Problem21 {
 
+    class Solution {
+        public boolean uniqueOccurrences(int[] arr) {
+            int max = -1000;
+            int min = 1000;
+            for (int j : arr) {
+                max = Math.max(max, j);
+                min = Math.min(min, j);
+            }
+            int [] counts = new int[max-min+1];
+            for (int i : arr) {
+                counts[i-min]++;
+            }
+            Set<Integer> set = new HashSet<>();
+            for (int count : counts) {
+                if (count!=0){
+                    if(set.contains(count)){
+                        return false;
+                    }else {
+                        set.add(count);
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
 
     /**
      * 1207. 独一无二的出现次数
