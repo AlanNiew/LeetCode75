@@ -14,6 +14,24 @@ public class Problem29 {
         problem29.deleteMiddle(head).print();
     }
 
+    class Solution {
+        public ListNode deleteMiddle(ListNode head) {
+            //创建头指针，方便操作
+            ListNode p = new ListNode(0,head);
+            //快慢指针
+            ListNode fast = p;
+            ListNode slow = p;
+            while (true){
+                fast = fast.next;
+                if (fast != null) fast = fast.next;
+                if (fast == null) break;
+                slow = slow.next;
+            }
+            slow.next = slow.next.next;
+            return p.next;
+        }
+    }
+
     public ListNode deleteMiddle(ListNode head) {
         //快慢指针
         //头节点，方便操作

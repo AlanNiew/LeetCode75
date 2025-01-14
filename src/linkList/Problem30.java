@@ -8,11 +8,30 @@ package linkList;
 public class Problem30 {
 
     public static void main(String[] args) {
-        int[] nodeArr = new int[]{2,1};
+        int[] nodeArr = new int[]{1,2,3,4,5};
         ListNode head = ListNode.build(nodeArr);
         head.print();
-        Problem30 problem30 = new Problem30();
-        problem30.oddEvenList(head).print();
+        new Solution().oddEvenList(head);
+    }
+
+    static class Solution {
+        public ListNode oddEvenList(ListNode head) {
+            //长度小于2的链表直接返回
+            if (head == null || head.next == null || head.next.next == null) return head;
+            //1做奇数头节点
+            ListNode oddHead = head;
+            //2做偶数头节点
+            ListNode evenHead = oddHead.next;
+            ListNode even = evenHead;
+            while (even != null && even.next != null){
+                oddHead.next = even.next;
+                oddHead = oddHead.next;
+                even.next = oddHead.next;
+                even = even.next;
+            }
+            oddHead.next = evenHead;
+            return head;
+        }
     }
 
     /**

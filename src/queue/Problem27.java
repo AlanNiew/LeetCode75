@@ -15,20 +15,28 @@ public class Problem27 {
         }
         System.out.println(queue);
     }
-}
-class RecentCounter {
 
-    Queue<Integer> queue;
-    public RecentCounter() {
-        queue = new ArrayDeque<>();
+    static class RecentCounter {
+        //队列
+        Queue<Integer> queue;
+        public RecentCounter() {
+            queue = new LinkedList<>();
+        }
+        public int ping(int t) {
+            int start = t - 3000;
+            int size = queue.size(), count = 0;
+            while (!queue.isEmpty() && (queue.peek() < start) ){
+                queue.poll();
+                count++;
+            }
+            queue.offer(t);
+            return size - count + 1;
+        }
     }
 
-    public int ping(int t) {
-        int begin = t - 3000;
-        while (!queue.isEmpty() && queue.peek() < begin)queue.poll();
-        queue.offer(begin);
-        return queue.size();
-    }
-
-
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.ping(t);
+ */
 }

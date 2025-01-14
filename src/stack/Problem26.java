@@ -10,7 +10,46 @@ import java.util.Stack;
 public class Problem26 {
 
     public static void main(String[] args) {
-        System.out.println(decodeString("abc13[cd]xyz"));
+        String s = new Solution().decodeString("3[z]2[2[y]pq4[2[jk]e1[f]]]ef");
+        System.out.println(s);
+    }
+
+
+    static class Solution {
+        public String decodeString(String s) {
+            Stack<StringBuilder> stack = new Stack<>();
+            Stack<Integer> stack1 = new Stack<>();
+            char[] chars = s.toCharArray();
+            int n = 0;
+            for (char aChar : chars) {
+                if (aChar <= '9') {
+                    //开始记录数字
+                    n = n * 10 + aChar - '0';
+                }else {
+                    if (aChar == ']') {
+                        //开始弹出
+                        StringBuilder pop,sb = new StringBuilder();
+                        while (!stack.isEmpty() && !(pop = stack.pop()).toString().equals("[")) {
+                            //如果是字符串进入要反转
+                            sb.append(pop.reverse());
+                        }
+                        stack.push(new StringBuilder(sb.reverse().toString().repeat(stack1.pop())));
+                    } else {
+                        stack.push(new StringBuilder(String.valueOf(aChar)));//放入
+                        //数字入栈,并重新记录
+                        if (aChar == '['){
+                            stack1.push(n);
+                            n = 0;
+                        }
+                    }
+                }
+            }
+            StringBuilder res = new StringBuilder();
+            while (!stack.isEmpty()) {
+                res.insert(0,stack.pop());
+            }
+            return res.toString();
+        }
     }
 
     /**

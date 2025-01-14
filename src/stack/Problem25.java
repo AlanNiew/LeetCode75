@@ -15,6 +15,37 @@ public class Problem25 {
         System.out.println(Arrays.toString(problem25.asteroidCollision(arr)));
     }
 
+    class Solution {
+        public int[] asteroidCollision(int[] asteroids) {
+            Stack<Integer> stack = new Stack<>();
+            for (int asteroid : asteroids) {
+                boolean flag = true;
+                //不为空，且两者相撞
+                while (flag && !stack.isEmpty() && stack.peek() > 0 && asteroid < 0){
+                    Integer peek = stack.peek();
+                    int abs = Math.abs(asteroid);
+                    if (peek > abs){
+                        flag = false;
+                    } else if (peek < abs){
+                        stack.pop();
+                    }else {
+                        flag = false;
+                        stack.pop();
+                    }
+                }
+                //存入
+                if (flag){
+                    stack.push(asteroid);
+                }
+            }
+            int size = stack.size();
+            int [] res = new int[size];
+            while (!stack.isEmpty()){
+                res[--size] = stack.pop();
+            }
+            return res;
+        }
+    }
     public int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();
         for (int before : asteroids) {
