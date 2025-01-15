@@ -13,6 +13,19 @@ public class Problem31 {
         new Problem31().reverseList(node).print();
     }
 
+    class Solution {
+        public ListNode reverseList(ListNode head) {
+            ListNode pre = null;
+            while (head!=null){
+                ListNode next = new ListNode(head.val);
+                next.next = pre;
+                pre = next;
+                head = head.next;
+            }
+            return pre;
+        }
+    }
+
     public ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode cur = head;
