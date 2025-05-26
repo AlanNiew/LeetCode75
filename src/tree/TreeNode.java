@@ -79,7 +79,6 @@ public class TreeNode {
 
     public void show() {
         TreeNode root = this;
-        if (root == null) System.out.println("EMPTY!");
         // 得到树的深度
         int treeDepth = getTreeDepth(root);
 
@@ -109,7 +108,7 @@ public class TreeNode {
                     i += line[i].length() > 4 ? 2: line[i].length() - 1;
                 }
             }
-            System.out.println(sb.toString());
+            System.out.println(sb);
         }
     }
 
