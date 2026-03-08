@@ -36,14 +36,15 @@ public class Problem39 {
         queue.add(root);
         while (!queue.isEmpty()){
             int size = queue.size();
-            Integer tmp = null;
+            int curVal = 0;
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                tmp = node.val;
+                curVal = node.val;
+//                res.add(node.val); // 正常层序遍历
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
             }
-            res.add(tmp);
+            res.add(curVal); // 只记录每层的最右边的节点
         }
     }
 }

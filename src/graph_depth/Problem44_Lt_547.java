@@ -1,19 +1,19 @@
-package depth;
+package graph_depth;
 
 /**
  * @author Niu
  * @date 2025-12-23
  */
-public class Lt_547 {
+public class Problem44_Lt_547 {
 
     public static void main(String[] args) {
-        Lt_547 lt_547 = new Lt_547();
+        Problem44_Lt_547 problem44Lt_547 = new Problem44_Lt_547();
         int[][] isConnected = new int[][]{
                 {1,0,0},
                 {0,1,0},
                 {0,0,1}
         };
-        System.out.println(lt_547.findCircleNum(isConnected));
+        System.out.println(problem44Lt_547.findCircleNum(isConnected));
     }
 
     public int findCircleNum(int[][] isConnected) {

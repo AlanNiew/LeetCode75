@@ -1,4 +1,4 @@
-package depth;
+package graph_depth;
 
 import java.util.List;
 
@@ -6,15 +6,13 @@ import java.util.List;
  * @author Niu
  * @date 2025-12-23
  */
-public class Lt_841 {
+public class Problem43_Lt_841 {
 
     public static void main(String[] args) {
-        Lt_841 lt_841 = new Lt_841();
+        Problem43_Lt_841 lt_841 = new Problem43_Lt_841();
         List<List<Integer>> rooms = List.of(List.of(1,3), List.of(3,0,1), List.of(2), List.of(0));
-
         System.out.println(lt_841.canVisitAllRooms(rooms));
     }
-
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
         int n = rooms.size();
         boolean[] visited = new boolean[n];

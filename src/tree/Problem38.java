@@ -1,14 +1,19 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author SouthWind
  * 编程千万条，规范第一条
  * Date 2024/9/4 21:18
  */
 public class Problem38 {
+    public static void main(String[] args) {
+        TreeNode root = TreeNode.build(new Integer[]{3,5,1,6,2,0,8,null,null,7,4});
+        root.show();
+        Problem38 problem38 = new Problem38();
+        TreeNode p = TreeNode.build(new Integer[]{5});
+        TreeNode q = TreeNode.build(new Integer[]{1});
+        problem38.lowestCommonAncestor(root,p,q).show();
+    }
 
     /**
      * 236. 二叉树的最近公共祖先
@@ -18,28 +23,13 @@ public class Problem38 {
      * @return
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        dfs(root,p);
-        dfs(root,q);
-        pRootList.stream().map(item->item.val).forEach(a-> System.out.print(" "+a));
-        System.out.println();
-        qRootList.stream().map(item->item.val).forEach(a-> System.out.print(" "+a));
-        if (pRootList.contains(q)){
-            return q;
-        }
-        if (qRootList.contains(p)){
-            return p;
-        }
+        if (root == null || root == p || root == q) return root;
+        // 递归寻找，分别在左子树和右子树中寻找p和q
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        // 如果left为空，说明p和q都不在root的左子树中，返回right
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) return right;
+        if (right == null) return left;
         return root;
-    }
-    List<TreeNode> pRootList = new ArrayList<>();
-    List<TreeNode> qRootList = new ArrayList<>();
-    private void dfs(TreeNode root,TreeNode p){
-        if (root == null)return;
-        if (root.left != null && root.right != null){
-            pRootList.add(root);
-            if (p.val == root.val) return;
-        }
-        dfs(root.left,p);
-        dfs(root.right,p);
     }
 }

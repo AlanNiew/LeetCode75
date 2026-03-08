@@ -27,41 +27,25 @@ public class Problem36 {
      * @return
      */
     public int pathSum(TreeNode root, int targetSum) {
-        //每个节点走一遍DFS
         if (root == null) return 0;
         map.put(0L,1);
         return prefix(root,0,targetSum);
     }
-    int count = 0;
     //前缀和
     Map<Long,Integer> map = new HashMap<>();
-
-    public void dfs(TreeNode root,long sum,int target){
-        if (root==null) return;
-        int val = root.val;
-        sum += val;
-        if (sum == target){
-            count++;
-        }
-        dfs(root.left,sum,target);
-        dfs(root.right,sum,target);
-    }
-
-    public int prefix(TreeNode root,long sum,int target){
+    public int prefix(TreeNode root, long sum, int target) {
         if (root == null) return 0;
         sum += root.val;
-        int res = 0;
         long preSum = sum - target;
         //找寻是否有符合的前缀和
-        res += map.getOrDefault(preSum,0);
-        Integer orDefault = map.getOrDefault(sum, 0);
-        map.put(sum, orDefault + 1);
-        int left = prefix(root.left,sum,target);
-        int right = prefix(root.right,sum,target);
-        res = res + left + right;
-        //遍历完该节点的所有孩子，将其从中减去
-        map.put(sum,orDefault);
+        int res = map.getOrDefault(preSum,0);
+        map.merge(sum,1,Integer::sum); // 记录当前节点前缀和
+        res += prefix(root.left,sum,target);
+        res += prefix(root.right,sum,target);
+        map.merge(sum,-1,Integer::sum); // 恢复现场
         return res;
     }
+
+
 
 }
