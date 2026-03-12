@@ -27,7 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - `src/prefix` - 前缀和算法
 
 - **高级主题**
-  - `src/graph` - 图算法
+  - `src/graph_breadth` - 图算法
   - `src/optimalpath` - 最优路径算法（含八数码问题A*实现）
   - `src/path` - 路径相关算法
 

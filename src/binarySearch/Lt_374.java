@@ -5,13 +5,16 @@ package binarySearch;
  * Data:2024/10/3 10:47
  */
 public class Lt_374 {
+    public static void main(String[] args) {
+        System.out.println(new Lt_374().guessNumber(10));
+    }
 
     private final int pick = 6;
     public int guessNumber(int n) {
         int left = 1;
         int right = n;
         while (left <= right){
-            int mid = left + (right - left) >> 1;
+            int mid = left + ((right - left) >> 1);
             int res = guess(mid);
             if (res == 0){
                 return mid;
@@ -25,12 +28,6 @@ public class Lt_374 {
     }
 
     int guess(int num) {
-        if (num > pick){
-            return -1;
-        }else if (num < pick){
-            return 1;
-        }else {
-            return 0;
-        }
+        return Integer.compare(pick, num);
     }
 }
