@@ -1,14 +1,13 @@
 package backtrack;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author SouthWind
  * 编程千万条，规范第一条
  * Date 2025/5/16 21:48
  */
-public class Lt_17 {
+public class Problem57_Lt17 {
     private static final Map<Integer,char[]> map = new HashMap<>();
     static {
         map.put(2,new char[]{'a','b','c'});

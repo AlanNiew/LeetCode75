@@ -1,13 +1,11 @@
-package oneQuestionPerDay;
-
-import java.util.Map;
+package dp;
 
 /**
  * @Author: Niu
  * @Date: 2025/5/16 09:03
  * @Description:
  */
-public class Lt_198 {
+public class Problem61_Lt198 {
     /*
 
 
@@ -41,11 +39,9 @@ public class Lt_198 {
             if (len == 1) return nums[0];
             int [] dp = new int[len];
             dp[0] = nums[0];
-            dp[1] = Math.max(nums[0], nums[1]);
+            dp[1] =  Math.max(nums[0], nums[1]);
             for (int i = 2; i < len; i++) {
-                int p1 = nums[i] + dp[i - 2]; // 偷当前
-                int p2 = dp[i - 1]; // 不偷
-                dp[i] = Math.max(p1, p2);
+                dp[i] = Math.max(dp[i-2] + nums[i], dp[i-1]);
             }
             return dp[len-1];
         }

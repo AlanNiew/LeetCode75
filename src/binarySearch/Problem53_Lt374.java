@@ -4,9 +4,9 @@ package binarySearch;
  * Author:Niu
  * Data:2024/10/3 10:47
  */
-public class Lt_374 {
+public class Problem53_Lt374 {
     public static void main(String[] args) {
-        System.out.println(new Lt_374().guessNumber(10));
+        System.out.println(new Problem53_Lt374().guessNumber(10));
     }
 
     private final int pick = 6;

@@ -5,10 +5,10 @@ package dp;
  * 编程千万条，规范第一条
  * Date 2025/5/16 21:21
  */
-public class Lt_746 {
+public class Problem60_Lt746 {
     public static void main(String[] args) {
         int[] cost = {10,15,20};
-        System.out.println(new Lt_746().minCostClimbingStairs(cost));
+        System.out.println(new Problem60_Lt746().minCostClimbingStairs(cost));
     }
 
     public int minCostClimbingStairs(int[] cost) {

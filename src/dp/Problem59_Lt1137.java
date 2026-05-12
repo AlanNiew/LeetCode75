@@ -5,7 +5,7 @@ package dp;
  * 编程千万条，规范第一条
  * Date 2025/5/15 21:43
  */
-public class Lt_1137 {
+public class Problem59_Lt1137 {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
